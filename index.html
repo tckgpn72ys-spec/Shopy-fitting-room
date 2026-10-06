@@ -2,74 +2,61 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHOPY V0.4 - REAL DRIP</title>
+<title>SHOPY TREND - Fitting Room</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <style>body{font-family:'Inter'}h1,h2{font-family:'Syne'}</style>
 </head>
-<body class="bg-[#080808] text-white">
+<body class="bg-[#070707] text-white">
 <header class="max-w-7xl mx-auto p-6 flex justify-between items-center">
-<h1 class="tracking-[0.4em] font-black">SHOPY</h1>
-<span class="text-[10px] bg-white text-black px-3 py-1 rounded-full font-bold">V0.4 REAL • FREE ASSETS</span>
+<h1 class="tracking-[0.3em] font-black text-xl">SHOPY TREND</h1>
+<span class="text-[10px] bg-white text-black px-4 py-1.5 rounded-full font-bold tracking-widest">OFFICIAL V0.4.1</span>
 </header>
 
 <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 p-6">
-<!-- MANNEQUIN REAL -->
-<div class="bg-[#121212] rounded-[40px] h-[720px] relative flex items-center justify-center overflow-hidden border border-white/10">
-<img src="https://i.ibb.co/5x7jR7g/mannequin-silhouette.png" onerror="this.style.display='none'" id="base" class="absolute h-[90%] opacity-10">
-<!-- On utilise des divs avec images réelles -->
+<div class="bg-[#111] rounded-[40px] h-[720px] relative flex items-center justify-center overflow-hidden border border-white/10">
 <div id="scene" class="relative w-[340px] h-[600px]">
-<img id="img-top" class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[85%] drop-shadow-2xl transition-all duration-500" src="">
-<img id="img-bottom" class="absolute top-[48%] left-1/2 -translate-x-1/2 w-[70%] drop-shadow-2xl transition-all duration-500" src="">
-<img id="img-shoe" class="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[50%] drop-shadow-2xl transition-all" src="">
+<img id="img-top" class="absolute top-[10%] left-1/2 -translate-x-1/2 w-[90%] drop-shadow-2xl" src="https://pngimg.com/d/hoodie_PNG1.png">
+<img id="img-bottom" class="absolute top-[50%] left-1/2 -translate-x-1/2 w-[65%] drop-shadow-2xl" style="filter: brightness(1.2);" src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&h=400&fit=crop">
+<img id="img-shoe" class="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[55%]" src="https://pngimg.com/d/shoe_PNG132.png">
 </div>
-<button onclick="document.getElementById('cam').classList.toggle('hidden');navigator.mediaDevices.getUserMedia({video:true}).then(s=>document.getElementById('cam').srcObject=s)" class="absolute top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-xs font-bold z-20">📷 CAM ON</button>
 <video id="cam" autoplay muted playsinline class="hidden absolute inset-0 w-full h-full object-cover opacity-30"></video>
+<button onclick="toggleCam()" id="camBtn" class="absolute top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-xs font-bold z-20">📷 CAM ON</button>
+<div class="absolute bottom-6 left-6 right-6 text-center"><p class="text-[9px] tracking-[0.3em] text-white/20">SHOPY TREND • AUTHENTIC FIT • KINSHASA 2026</p></div>
 </div>
 
-<!-- CONTROLS -->
 <div class="space-y-8">
-<h2 class="text-5xl font-black leading-none">REAL<br><span class="text-white/20">DRIP TRY-ON</span></h2>
-<p class="text-white/40 text-sm">Vrais PNG libres • Change le drop en 1 clic</p>
+<h2 class="text-5xl font-black leading-none">SHOPY<br><span class="text-white/20">TREND</span></h2>
+<p class="text-white/40 text-sm">Essayage réel • Projet universitaire Mindverse Infinity</p>
 
 <div class="space-y-4">
 <div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">HOODIES (PNG REEL)</p>
-<div class="grid grid-cols-3 gap-2">
-<button onclick="setCloth('top','https://pngimg.com/d/hoodie_PNG1.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5 hover:border-white"><img src="https://pngimg.com/d/hoodie_PNG1.png" class="h-12 mx-auto"><span class="text-[10px] mt-1 block">Black Hood</span></button>
-<button onclick="setCloth('top','https://pngimg.com/d/tshirt_PNG5448.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5 hover:border-white"><img src="https://pngimg.com/d/tshirt_PNG5448.png" class="h-12 mx-auto"><span class="text-[10px] mt-1 block">White Tee</span></button>
-<button onclick="setCloth('top','')" class="bg-white/5 p-3 rounded-2xl text-xs">✕ Vide</button>
+<p class="text-[10px] tracking-widest text-white/30 mb-2">TOPS</p>
+<div class="flex gap-2">
+<button onclick="setCloth('top','https://pngimg.com/d/hoodie_PNG1.png')" class="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">Hoodie</button>
+<button onclick="setCloth('top','https://pngimg.com/d/tshirt_PNG5448.png')" class="bg-[#1c1c1c] border border-white/10 px-4 py-2 rounded-full text-xs">Tee White</button>
 </div>
 </div>
-
 <div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">PANTS (PNG REEL)</p>
-<div class="grid grid-cols-3 gap-2">
-<button onclick="setCloth('bottom','https://pngimg.com/d/jeans_PNG10.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/jeans_PNG10.png" class="h-12 mx-auto"><span class="text-[10px]">Baggy Blue</span></button>
-<button onclick="setCloth('bottom','https://pngimg.com/d/trousers_PNG1012.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/trousers_PNG1012.png" class="h-12 mx-auto"><span class="text-[10px]">Cargo</span></button>
-<button onclick="setCloth('bottom','')" class="bg-white/5 p-3 rounded-2xl text-xs">✕ Vide</button>
-</div>
-</div>
-
-<div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">SNEAKERS (PNG REEL)</p>
-<div class="grid grid-cols-3 gap-2">
-<button onclick="setCloth('shoe','https://pngimg.com/d/shoe_PNG132.png')" class="bg-white text-black p-3 rounded-2xl font-bold"><img src="https://pngimg.com/d/shoe_PNG132.png" class="h-10 mx-auto"><span class="text-[10px]">Jordan</span></button>
-<button onclick="setCloth('shoe','https://pngimg.com/d/shoe_PNG13222.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/shoe_PNG13222.png" class="h-10 mx-auto"><span class="text-[10px]">Runner</span></button>
+<p class="text-[10px] tracking-widest text-white/30 mb-2">BOTTOMS</p>
+<div class="flex gap-2">
+<button onclick="document.getElementById('img-bottom').style.display='block'" class="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">Show Pants</button>
+<button onclick="document.getElementById('img-bottom').style.display='none'" class="bg-[#1c1c1c] border border-white/10 px-4 py-2 rounded-full text-xs">Hide</button>
 </div>
 </div>
 </div>
 
-<button class="w-full bg-white text-black py-5 rounded-full font-black tracking-widest">BUY FULL LOOK - $149</button>
-<p class="text-[9px] text-white/20 text-center">Images via pngimg.com / Freepik libre • SHOPY V0.4</p>
+<button class="w-full bg-white text-black py-5 rounded-full font-black tracking-[0.2em] mt-10">SAVE LOOK • SHOPY TREND</button>
+<p class="text-center text-[10px] text-white/30">Présente ce lien à l'université : ton site est live.</p>
 </div>
 </div>
 
 <script>
 function setCloth(id,url){document.getElementById('img-'+id).src=url}
-setCloth('top','https://pngimg.com/d/hoodie_PNG1.png')
-setCloth('bottom','https://pngimg.com/d/jeans_PNG10.png')
-setCloth('shoe','https://pngimg.com/d/shoe_PNG132.png')
+async function toggleCam(){
+const v=document.getElementById('cam'); const b=document.getElementById('camBtn');
+if(v.classList.contains('hidden')){try{const s=await navigator.mediaDevices.getUserMedia({video:true});v.srcObject=s;v.classList.remove('hidden');b.innerText='CAM OFF'}catch(e){alert('Autorise caméra')}}else{v.srcObject.getTracks().forEach(t=>t.stop());v.classList.add('hidden');b.innerText='CAM ON'}
+}
 </script>
 </body>
 </html>
