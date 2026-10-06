@@ -1,18 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shopy Fitting Room</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=devicejkk-width, initial-scale=1.0">
+<title>SHOPY - Fitting Room</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif;background:#0A0A0A}h1{font-family:'Syne',sans-serif}</style>
 </head>
-<body style="background:#0a0a0a;color:white;text-align:center;font-family:sans-serif;padding:20px">
-<h1>SHOPY FITTING ROOM</h1>
-<p style="color:#888">Mindverse Infinity V0.1</p>
-<div style="width:220px;height:380px;background:white;color:black;margin:20px auto;border-radius:25px;padding-top:30px">
-<p>MANNEQUIN BLANC</p>
-<div id="look" style="font-size:50px;margin-top:80px">👕</div>
+<body class="bg-black text-white min-h-screen flex flex-col items-center">
+<header class="w-full p-6 flex justify-between items-center max-w-6xl">
+<h1 class="text-2xl tracking-[0.3em] font-bold">SHOPY</h1>
+<span class="text-[10px] border border-white/20 px-3 py-1 rounded-full tracking-widest">FITTING ROOM V0.2 • LIVE</span>
+</header>
+
+<main class="w-full max-w-6xl grid md:grid-cols-2 gap-8 p-6 items-center">
+<!-- MANNEQUIN -->
+<div class="relative bg-[#141414] rounded-[40px] h-[650px] flex items-center justify-center overflow-hidden border border-white/5">
+<div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+<div id="mannequin" class="relative z-10 text-center transition-all duration-500">
+<div class="text-[200px] leading-none drop-shadow-2xl">🧍</div>
+<div id="top-layer" class="absolute top-[22%] left-1/2 -translate-x-1/2 text-7xl">👕</div>
+<div id="bottom-layer" class="absolute top-[52%] left-1/2 -translate-x-1/2 text-7xl">👖</div>
+<div id="shoe-layer" class="absolute top-[78%] left-1/2 -translate-x-1/2 text-5xl">👟</div>
 </div>
-<button onclick="document.getElementById('look').innerHTML='👕 T-SHIRT'" style="padding:12px 18px;margin:5px;border-radius:12px">HAUT</button>
-<button onclick="document.getElementById('look').innerHTML='👖 JEAN'" style="padding:12px 18px;margin:5px;border-radius:12px">BAS</button>
-<button onclick="document.getElementById('look').innerHTML='👟 SNEAKER'" style="padding:12px 18px;margin:5px;border-radius:12px">FOOT</button>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between text-[10px] tracking-widest text-white/40">
+<span>MODEL 001</span><span>3D VIEW • 360°</span>
+</div>
+</div>
+
+<!-- CONTROLS -->
+<div class="space-y-8">
+<div>
+<h2 class="text-5xl font-bold leading-none tracking-tight">ESSAYE<br><span class="text-white/40">AVANT D'ACHETER.</span></h2>
+<p class="text-white/50 mt-4 text-sm">Clique pour habiller le mannequin. La prochaine étape : ton corps en 3D.</p>
+</div>
+
+<div class="space-y-6">
+<div>
+<p class="text-[11px] tracking-[0.2em] text-white/40 mb-3">HAUTS</p>
+<div class="flex gap-2">
+<button onclick="setTop('👕')" class="bg-white text-black px-5 py-3 rounded-full text-sm font-semibold">T-Shirt</button>
+<button onclick="setTop('🧥')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Veste</button>
+<button onclick="setTop('👔')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Chemise</button>
+<button onclick="setTop('')" class="bg-white/5 px-4 py-3 rounded-full text-sm">✕</button>
+</div>
+</div>
+
+<div>
+<p class="text-[11px] tracking-[0.2em] text-white/40 mb-3">BAS</p>
+<div class="flex gap-2">
+<button onclick="setBottom('👖')" class="bg-white text-black px-5 py-3 rounded-full text-sm font-semibold">Jean</button>
+<button onclick="setBottom('🩳')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Short</button>
+<button onclick="setBottom('👗')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Cargo</button>
+<button onclick="setBottom('')" class="bg-white/5 px-4 py-3 rounded-full text-sm">✕</button>
+</div>
+</div>
+
+<div>
+<p class="text-[11px] tracking-[0.2em] text-white/40 mb-3">FOOTWEAR</p>
+<div class="flex gap-2">
+<button onclick="setShoe('👟')" class="bg-white text-black px-5 py-3 rounded-full text-sm font-semibold">Sneaker</button>
+<button onclick="setShoe('🥾')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Boots</button>
+<button onclick="setShoe('👞')" class="bg-white/10 border border-white/10 px-5 py-3 rounded-full text-sm">Formel</button>
+</div>
+</div>
+</div>
+
+<button class="w-full bg-white text-black py-5 rounded-full font-bold tracking-widest text-sm mt-4">COMMANDER CE LOOK - $89</button>
+<p class="text-center text-[10px] text-white/30 tracking-widest">MINDVERSE INFINITY ©️ 2026 • KINSHASA</p>
+</div>
+</main>
+
+<script>
+function setTop(e){document.getElementById('top-layer').innerText=e}
+function setBottom(e){document.getElementById('bottom-layer').innerText=e}
+function setShoe(e){document.getElementById('shoe-layer').innerText=e}
+</script>
 </body>
 </html>
