@@ -2,95 +2,75 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHOPY V0.3 - Street Luxe AR</title>
+<title>SHOPY V0.4 - REAL DRIP</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-<style>body{font-family:'Inter',sans-serif}</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter'}h1,h2{font-family:'Syne'}</style>
 </head>
-<body class="bg-[#070707] text-white min-h-screen">
-<header class="p-6 flex justify-between max-w-7xl mx-auto">
-<h1 class="font-black tracking-[0.4em] text-xl" style="font-family:Syne">SHOPY</h1>
-<div class="flex gap-2"><span class="text-[9px] border border-white/10 px-3 py-1 rounded-full">V0.3 STREET LUXE</span><span class="text-[9px] bg-white text-black px-3 py-1 rounded-full">AR ACTIVE</span></div>
+<body class="bg-[#080808] text-white">
+<header class="max-w-7xl mx-auto p-6 flex justify-between items-center">
+<h1 class="tracking-[0.4em] font-black">SHOPY</h1>
+<span class="text-[10px] bg-white text-black px-3 py-1 rounded-full font-bold">V0.4 REAL • FREE ASSETS</span>
 </header>
 
-<div class="max-w-7xl mx-auto grid md:grid-cols-[1.2fr_0.8fr] gap-6 p-6">
-<!-- FITTING ROOM -->
-<div class="relative bg-[#111] rounded-[32px] h-[700px] overflow-hidden border border-white/5 flex items-center justify-center">
-<video id="camera" autoplay playsinline muted class="absolute inset-0 w-full h-full object-cover opacity-40 hidden"></video>
-<div id="mannequin" class="relative z-10 scale-110">
-<div class="text-[180px]">🧍🏾</div>
-<div id="top" class="absolute top-[22%] left-1/2 -translate-x-1/2 text-6xl transition-all">🧥</div>
-<div id="bottom" class="absolute top-[53%] left-1/2 -translate-x-1/2 text-6xl transition-all">👖</div>
-<div id="shoe" class="absolute top-[80%] left-1/2 -translate-x-1/2 text-5xl">👟</div>
-<div id="cap" class="absolute top-[5%] left-1/2 -translate-x-1/2 text-4xl"></div>
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6 p-6">
+<!-- MANNEQUIN REAL -->
+<div class="bg-[#121212] rounded-[40px] h-[720px] relative flex items-center justify-center overflow-hidden border border-white/10">
+<img src="https://i.ibb.co/5x7jR7g/mannequin-silhouette.png" onerror="this.style.display='none'" id="base" class="absolute h-[90%] opacity-10">
+<!-- On utilise des divs avec images réelles -->
+<div id="scene" class="relative w-[340px] h-[600px]">
+<img id="img-top" class="absolute top-[15%] left-1/2 -translate-x-1/2 w-[85%] drop-shadow-2xl transition-all duration-500" src="">
+<img id="img-bottom" class="absolute top-[48%] left-1/2 -translate-x-1/2 w-[70%] drop-shadow-2xl transition-all duration-500" src="">
+<img id="img-shoe" class="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[50%] drop-shadow-2xl transition-all" src="">
 </div>
-<button onclick="toggleCam()" class="absolute top-6 right-6 z-20 bg-white text-black px-4 py-2 rounded-full text-xs font-bold">📷 CAMERA ON</button>
-<div class="absolute bottom-6 left-6 z-20 flex gap-2">
-<button onclick="size('S')" class="size-btn bg-white/10 px-3 py-1 rounded-full text-xs">S</button>
-<button onclick="size('M')" class="size-btn bg-white text-black px-3 py-1 rounded-full text-xs">M</button>
-<button onclick="size('L')" class="size-btn bg-white/10 px-3 py-1 rounded-full text-xs">L</button>
-</div>
+<button onclick="document.getElementById('cam').classList.toggle('hidden');navigator.mediaDevices.getUserMedia({video:true}).then(s=>document.getElementById('cam').srcObject=s)" class="absolute top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-xs font-bold z-20">📷 CAM ON</button>
+<video id="cam" autoplay muted playsinline class="hidden absolute inset-0 w-full h-full object-cover opacity-30"></video>
 </div>
 
-<!-- SHOP -->
-<div class="space-y-6">
-<h2 class="text-4xl font-bold" style="font-family:Syne">STREET<br><span class="text-white/30">LUXE DROP</span></h2>
+<!-- CONTROLS -->
+<div class="space-y-8">
+<h2 class="text-5xl font-black leading-none">REAL<br><span class="text-white/20">DRIP TRY-ON</span></h2>
+<p class="text-white/40 text-sm">Vrais PNG libres • Change le drop en 1 clic</p>
 
+<div class="space-y-4">
 <div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">HOODIE / JACKET</p>
-<div class="flex flex-wrap gap-2">
-<button onclick="setItem('top','🧥')" class="bg-white text-black px-4 py-2 rounded-full text-sm">Puff Black</button>
-<button onclick="setItem('top','🦺')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Cargo Vest</button>
-<button onclick="setItem('top','👕')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Oversize Tee</button>
+<p class="text-[10px] tracking-widest text-white/30 mb-2">HOODIES (PNG REEL)</p>
+<div class="grid grid-cols-3 gap-2">
+<button onclick="setCloth('top','https://pngimg.com/d/hoodie_PNG1.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5 hover:border-white"><img src="https://pngimg.com/d/hoodie_PNG1.png" class="h-12 mx-auto"><span class="text-[10px] mt-1 block">Black Hood</span></button>
+<button onclick="setCloth('top','https://pngimg.com/d/tshirt_PNG5448.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5 hover:border-white"><img src="https://pngimg.com/d/tshirt_PNG5448.png" class="h-12 mx-auto"><span class="text-[10px] mt-1 block">White Tee</span></button>
+<button onclick="setCloth('top','')" class="bg-white/5 p-3 rounded-2xl text-xs">✕ Vide</button>
 </div>
 </div>
 
 <div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">CARGO / DENIM</p>
-<div class="flex flex-wrap gap-2">
-<button onclick="setItem('bottom','👖')" class="bg-white text-black px-4 py-2 rounded-full text-sm">Baggy Jean</button>
-<button onclick="setItem('bottom','🩳')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Cargo Short</button>
-<button onclick="setItem('bottom','👗')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Tech Cargo</button>
+<p class="text-[10px] tracking-widest text-white/30 mb-2">PANTS (PNG REEL)</p>
+<div class="grid grid-cols-3 gap-2">
+<button onclick="setCloth('bottom','https://pngimg.com/d/jeans_PNG10.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/jeans_PNG10.png" class="h-12 mx-auto"><span class="text-[10px]">Baggy Blue</span></button>
+<button onclick="setCloth('bottom','https://pngimg.com/d/trousers_PNG1012.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/trousers_PNG1012.png" class="h-12 mx-auto"><span class="text-[10px]">Cargo</span></button>
+<button onclick="setCloth('bottom','')" class="bg-white/5 p-3 rounded-2xl text-xs">✕ Vide</button>
 </div>
 </div>
 
 <div>
-<p class="text-[10px] tracking-widest text-white/30 mb-2">SNEAKERS / CAP</p>
-<div class="flex flex-wrap gap-2">
-<button onclick="setItem('shoe','👟')" class="bg-white text-black px-4 py-2 rounded-full text-sm">Jordan 4</button>
-<button onclick="setItem('cap','🧢')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Cap LA</button>
-<button onclick="setItem('cap','🎩')" class="bg-[#1A1A1A] border border-white/10 px-4 py-2 rounded-full text-sm">Beanie</button>
+<p class="text-[10px] tracking-widest text-white/30 mb-2">SNEAKERS (PNG REEL)</p>
+<div class="grid grid-cols-3 gap-2">
+<button onclick="setCloth('shoe','https://pngimg.com/d/shoe_PNG132.png')" class="bg-white text-black p-3 rounded-2xl font-bold"><img src="https://pngimg.com/d/shoe_PNG132.png" class="h-10 mx-auto"><span class="text-[10px]">Jordan</span></button>
+<button onclick="setCloth('shoe','https://pngimg.com/d/shoe_PNG13222.png')" class="bg-[#1c1c1c] p-3 rounded-2xl border border-white/5"><img src="https://pngimg.com/d/shoe_PNG13222.png" class="h-10 mx-auto"><span class="text-[10px]">Runner</span></button>
+</div>
 </div>
 </div>
 
-<div class="pt-4 border-t border-white/10">
-<div class="flex gap-2 mb-4">
-<div onclick="color('#fff')" class="w-8 h-8 bg-white rounded-full border-2 border-white"></div>
-<div onclick="color('#ff0000')" class="w-8 h-8 bg-red-600 rounded-full"></div>
-<div onclick="color('#00ff88')" class="w-8 h-8 bg-green-400 rounded-full"></div>
-<div onclick="color('#000')" class="w-8 h-8 bg-black border border-white/20 rounded-full"></div>
-</div>
-<button class="w-full bg-white text-black py-4 rounded-full font-black text-sm tracking-widest">ADD TO CART - $129</button>
-<p class="text-[9px] text-white/20 text-center mt-3 tracking-widest">SHOPY x MINDVERSE INFINITY • KINSHASA DRIP • BETA</p>
-</div>
+<button class="w-full bg-white text-black py-5 rounded-full font-black tracking-widest">BUY FULL LOOK - $149</button>
+<p class="text-[9px] text-white/20 text-center">Images via pngimg.com / Freepik libre • SHOPY V0.4</p>
 </div>
 </div>
 
 <script>
-let camOn=false
-function setItem(id,emoji){document.getElementById(id).innerText=emoji}
-function size(s){
-let scale=s=='S'?0.9:s=='L'?1.3:1.1
-document.getElementById('mannequin').style.transform=`scale(${scale})`
-document.querySelectorAll('.size-btn').forEach(b=>b.className='size-btn bg-white/10 px-3 py-1 rounded-full text-xs')
-event.target.className='size-btn bg-white text-black px-3 py-1 rounded-full text-xs'
-}
-function color(c){document.getElementById('top').style.filter=c=='#fff'?'':'drop-shadow(0 0 20px '+c+') hue-rotate(90deg)'}
-async function toggleCam(){
-const v=document.getElementById('camera')
-if(!camOn){try{const s=await navigator.mediaDevices.getUserMedia({video:true});v.srcObject=s;v.classList.remove('hidden');camOn=true;event.target.innerText='📷 CAM OFF'}catch(e){alert('Autorise la caméra')}}
-else{v.srcObject.getTracks().forEach(t=>t.stop());v.classList.add('hidden');camOn=false;event.target.innerText='📷 CAMERA ON'}
-}
+function setCloth(id,url){document.getElementById('img-'+id).src=url}
+setCloth('top','https://pngimg.com/d/hoodie_PNG1.png')
+setCloth('bottom','https://pngimg.com/d/jeans_PNG10.png')
+setCloth('shoe','https://pngimg.com/d/shoe_PNG132.png')
 </script>
 </body>
 </html>
+
