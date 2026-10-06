@@ -1,0 +1,1612 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Shopy Trend — Fitting Room</title>
+
+<meta name="theme-color" content="#07133f">
+
+<style>
+:root{
+  --navy:#07133f;
+  --blue:#1e49d8;
+  --yellow:#ffbf19;
+  --ink:#102052;
+  --bg:#eaf1ff;
+  --card:#fff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,
+  BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#050b25;
+  color:var(--ink);
+}
+
+button{
+  font:inherit;
+}
+
+.app{
+  min-height:100vh;
+  background:linear-gradient(#eef5ff,#dce9ff);
+  max-width:620px;
+  margin:auto;
+  position:relative;
+  overflow:hidden;
+}
+
+/* HEADER */
+
+header{
+  height:74px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.brand{
+  font-weight:950;
+  letter-spacing:.5px;
+}
+
+.brand small{
+  display:block;
+  color:#9fb3ef;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-top:1px;
+}
+
+.icon{
+  width:42px;
+  height:42px;
+  border:1px solid #38509a;
+  background:#101f59;
+  color:white;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+
+/* MAIN */
+
+main{
+  padding:16px 18px 125px;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  background:linear-gradient(145deg,#cfe0ff,#b9d2ff);
+  border-radius:28px;
+  padding:16px 12px 8px;
+  box-shadow:0 10px 35px #8ba4d633;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:245px;
+  height:245px;
+  border-radius:50%;
+  background:#ffbd17;
+  left:50%;
+  top:65px;
+  transform:translateX(-50%);
+  opacity:.95;
+}
+
+.heroTop{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.badge{
+  background:#fff9;
+  border:1px solid #fff;
+  color:#17306e;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.mode{
+  background:#07133f;
+  color:white;
+  border:0;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* MANNEQUIN */
+
+.canvas{
+  height:405px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  z-index:1;
+}
+
+.mannequin{
+  width:250px;
+  height:390px;
+  filter:drop-shadow(0 12px 8px #29416d33);
+}
+
+.shadow{
+  position:absolute;
+  bottom:16px;
+  width:135px;
+  height:20px;
+  background:#17305a38;
+  border-radius:50%;
+  filter:blur(2px);
+}
+
+.caption{
+  text-align:center;
+  font-weight:800;
+  font-size:16px;
+  margin:0 0 12px;
+}
+
+.status{
+  font-size:11px;
+  text-align:center;
+  color:#5570aa;
+  margin-bottom:2px;
+}
+
+/* SECTIONS */
+
+h2{
+  font-size:20px;
+  margin:24px 0 12px;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:4px;
+}
+
+.tab{
+  white-space:nowrap;
+  border:2px solid #0c2057;
+  background:transparent;
+  color:#102052;
+  border-radius:999px;
+  padding:10px 18px;
+  font-weight:850;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:#102052;
+  color:#fff;
+}
+
+/* PRODUCTS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.item{
+  background:#fff;
+  border:1px solid #d7e2fb;
+  border-radius:18px;
+  padding:10px;
+  min-height:142px;
+  cursor:pointer;
+  box-shadow:0 5px 15px #38548614;
+}
+
+.item.active{
+  outline:3px solid #ffbd17;
+}
+
+.itemVisual{
+  height:86px;
+  display:grid;
+  place-items:center;
+  background:#f1f5ff;
+  border-radius:13px;
+  margin-bottom:8px;
+}
+
+.item svg{
+  width:70px;
+  height:75px;
+}
+
+.itemName{
+  font-size:12px;
+  font-weight:800;
+  text-align:center;
+}
+
+/* COLORS */
+
+.swatches{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.swatch{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:3px solid #fff;
+  box-shadow:0 0 0 1px #afbddc;
+  cursor:pointer;
+}
+
+.swatch.active{
+  box-shadow:0 0 0 3px #102052;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(620px,100%);
+  background:#07133f;
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+  z-index:30;
+}
+
+.bottom button{
+  border:2px solid #fff;
+  background:transparent;
+  color:#fff;
+  border-radius:14px;
+  padding:12px 7px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.bottom .save{
+  background:#ffbf19;
+  color:#102052;
+  border-color:#ffbf19;
+}
+
+/* SHEET */
+
+.sheet{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:50;
+  display:none;
+  align-items:flex-end;
+}
+
+.sheet.open{
+  display:flex;
+}
+
+.panel{
+  width:min(620px,100%);
+  background:#fff;
+  border-radius:25px 25px 0 0;
+  padding:22px;
+  max-height:78vh;
+  overflow:auto;
+}
+
+.panelHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.close{
+  border:0;
+  background:#edf2ff;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.looks{
+  display:grid;
+  gap:10px;
+  margin-top:15px;
+}
+
+.look{
+  background:#f3f6ff;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.empty{
+  color:#7280a4;
+  text-align:center;
+  padding:35px 10px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:95px;
+  transform:translate(-50%,20px);
+  background:#07133f;
+  color:#fff;
+  padding:11px 16px;
+  border-radius:999px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:80;
+  font-weight:700;
+  font-size:13px;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* MOBILE */
+
+@media(min-width:621px){
+
+  body{
+    padding:20px 0;
+  }
+
+  .app{
+    border-radius:28px;
+    box-shadow:0 25px 80px #0008;
+    min-height:calc(100vh - 40px);
+  }
+
+  header{
+    border-radius:28px 28px 0 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+
+  <button
+    class="icon"
+    onclick="showLooks()"
+    aria-label="Mes looks">
+    ★
+  </button>
+
+  <div class="brand">
+    SHOPY TREND
+    <small>FITTING ROOM</small>
+  </div>
+
+  <button
+    class="icon"
+    onclick="resetLook()"
+    aria-label="Réinitialiser">
+    ↻
+  </button>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+  <div class="heroTop">
+
+    <span class="badge">
+      FITTING ROOM · V1
+    </span>
+
+    <button
+      class="mode"
+      onclick="randomLook()">
+      LOOK ALÉATOIRE
+    </button>
+
+  </div>
+
+
+  <div class="canvas">
+
+    <div class="shadow"></div>
+
+    <svg
+      class="mannequin"
+      viewBox="0 0 250 390"
+      aria-label="Mannequin habillé">
+
+      <!-- TÊTE -->
+
+      <circle
+        cx="125"
+        cy="38"
+        r="29"
+        fill="#f7cfae"
+        stroke="#26365f"
+        stroke-width="2"/>
+
+      <!-- CHEVEUX -->
+
+      <path
+        d="M98 35 Q125 5 152 35 L150 20 Q125 -2 100 20Z"
+        fill="#1d49d7"/>
+
+
+      <!-- COU -->
+
+      <g id="neck">
+
+        <path
+          d="M112 62 L138 62 L141 76 L109 76Z"
+          fill="#f7cfae"/>
+
+      </g>
+
+
+      <!-- HAUT -->
+
+      <g id="top">
+
+        <path
+          id="topShape"
+          d="M108 68
+             L82 83
+             L60 137
+             L82 151
+             L94 112
+             L94 205
+             L156 205
+             L156 112
+             L168 151
+             L190 137
+             L168 83
+             L142 68
+             Q125 84 108 68Z"
+          fill="#204bd9"
+          stroke="#1b2d5d"
+          stroke-width="2"/>
+
+        <path
+          id="topDetail"
+          d=""
+          fill="none"
+          stroke="#fff"
+          stroke-width="3"/>
+
+      </g>
+
+
+      <!-- BAS -->
+
+      <g id="bottom">
+
+        <path
+          id="bottomShape"
+          d="M94 204
+             L156 204
+             L163 302
+             L132 302
+             L125 218
+             L118 302
+             L87 302Z"
+          fill="#304f88"
+          stroke="#1b2d5d"
+          stroke-width="2"/>
+
+      </g>
+
+
+      <!-- CHAUSSURES -->
+
+      <g id="shoes">
+
+        <path
+          d="M88 302
+             L120 302
+             L118 325
+             Q104 332 79 324
+             L82 307Z"
+          fill="#fff"
+          stroke="#52668e"
+          stroke-width="2"/>
+
+        <path
+          d="M130 302
+             L162 302
+             L168 324
+             Q144 332 129 325
+             L132 307Z"
+          fill="#fff"
+          stroke="#52668e"
+          stroke-width="2"/>
+
+      </g>
+
+
+      <g id="neckItem"></g>
+
+    </svg>
+
+  </div>
+
+
+  <div
+    class="caption"
+    id="caption">
+    Hoodie bleu roi · jean denim · baskets blanches
+  </div>
+
+  <div
+    class="status"
+    id="status">
+    Votre look est prêt
+  </div>
+
+</section>
+
+
+<h2>
+  Choisis tes pièces
+</h2>
+
+<div
+  class="tabs"
+  id="tabs">
+</div>
+
+
+<div
+  class="grid"
+  id="items">
+</div>
+
+
+<h2>
+  Couleur du haut
+</h2>
+
+<div
+  class="swatches"
+  id="swatches">
+</div>
+
+</main>
+
+
+<!-- BARRE DU BAS -->
+
+<div class="bottom">
+
+  <button
+    class="save"
+    onclick="saveLook()">
+    ★ Enregistrer
+  </button>
+
+  <button
+    onclick="shareWhatsApp()">
+    WhatsApp
+  </button>
+
+  <button
+    onclick="exportLook()">
+    Image
+  </button>
+
+</div>
+
+
+<!-- MES LOOKS -->
+
+<div
+  class="sheet"
+  id="sheet"
+  onclick="if(event.target===this)closeSheet()">
+
+  <div class="panel">
+
+    <div class="panelHead">
+
+      <h2 style="margin:0">
+        Mes looks
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeSheet()">
+        ×
+      </button>
+
+    </div>
+
+    <div
+      class="looks"
+      id="looks">
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  class="toast"
+  id="toast">
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PRODUITS
+========================= */
+
+const data = {
+
+  Haut: [
+
+    {
+      id:"none",
+      name:"Aucun",
+      color:"#dce4f5",
+      kind:"none"
+    },
+
+    {
+      id:"tee",
+      name:"Tee-shirt",
+      color:"#2450df",
+      kind:"tee"
+    },
+
+    {
+      id:"polo",
+      name:"Polo",
+      color:"#2450df",
+      kind:"polo"
+    },
+
+    {
+      id:"hoodie",
+      name:"Hoodie",
+      color:"#2450df",
+      kind:"hoodie"
+    },
+
+    {
+      id:"sweat",
+      name:"Pull",
+      color:"#111a34",
+      kind:"sweat"
+    }
+
+  ],
+
+
+  Bas: [
+
+    {
+      id:"jean",
+      name:"Jean denim",
+      color:"#304f88",
+      kind:"jean"
+    },
+
+    {
+      id:"black",
+      name:"Pantalon noir",
+      color:"#161b29",
+      kind:"black"
+    },
+
+    {
+      id:"cargo",
+      name:"Cargo",
+      color:"#718064",
+      kind:"cargo"
+    },
+
+    {
+      id:"short",
+      name:"Short",
+      color:"#27365b",
+      kind:"short"
+    }
+
+  ],
+
+
+  Pieds: [
+
+    {
+      id:"white",
+      name:"Baskets blanches",
+      color:"#fff",
+      kind:"white"
+    },
+
+    {
+      id:"blackshoe",
+      name:"Baskets noires",
+      color:"#171717",
+      kind:"blackshoe"
+    },
+
+    {
+      id:"redshoe",
+      name:"Baskets rouges",
+      color:"#d93636",
+      kind:"redshoe"
+    }
+
+  ],
+
+
+  Cou: [
+
+    {
+      id:"cap",
+      name:"Casquette",
+      color:"#204bd9",
+      kind:"cap"
+    },
+
+    {
+      id:"chain",
+      name:"Chaîne",
+      color:"#d9a82b",
+      kind:"chain"
+    },
+
+    {
+      id:"noneNeck",
+      name:"Aucun",
+      color:"#dce4f5",
+      kind:"noneNeck"
+    }
+
+  ]
+
+};
+
+
+/* =========================
+   ÉTAT
+========================= */
+
+let state = {
+
+  Haut:"hoodie",
+
+  Bas:"jean",
+
+  Pieds:"white",
+
+  Cou:"noneNeck",
+
+  topColor:"#2450df"
+
+};
+
+
+let activeTab = "Haut";
+
+
+/* =========================
+   ONGLETS
+========================= */
+
+function renderTabs(){
+
+  document.getElementById("tabs").innerHTML =
+
+    Object.keys(data)
+      .map(k => `
+
+        <button
+          class="tab ${k===activeTab ? "active" : ""}"
+          onclick="selectTab('${k}')">
+
+          ${k}
+
+        </button>
+
+      `)
+      .join("");
+
+}
+
+
+function selectTab(k){
+
+  activeTab = k;
+
+  renderTabs();
+
+  renderItems();
+
+}
+
+
+/* =========================
+   PRODUITS
+========================= */
+
+function renderItems(){
+
+  document.getElementById("items").innerHTML =
+
+    data[activeTab]
+      .map(x => `
+
+        <div
+          class="item ${state[activeTab]===x.id ? "active" : ""}"
+          onclick="pick('${x.id}')">
+
+          <div class="itemVisual">
+
+            ${miniSVG(x.kind,x.color)}
+
+          </div>
+
+          <div class="itemName">
+
+            ${x.name}
+
+          </div>
+
+        </div>
+
+      `)
+      .join("");
+
+}
+
+
+function miniSVG(kind,color){
+
+  return `
+
+    <svg viewBox="0 0 80 80">
+
+      <path
+        d="
+        M34 15
+        L20 24
+        L12 45
+        L22 50
+        L28 34
+        L28 67
+        L52 67
+        L52 34
+        L58 50
+        L68 45
+        L60 24
+        L46 15
+        Q40 20 34 15Z"
+        fill="${kind==="none" ? "none" : color}"
+        stroke="#26365f"
+        stroke-width="2"/>
+
+    </svg>
+
+  `;
+
+}
+
+
+/* =========================
+   CHOIX PRODUIT
+========================= */
+
+function pick(id){
+
+  state[activeTab] = id;
+
+  renderItems();
+
+  renderMannequin();
+
+  updateCaption();
+
+}
+
+
+/* =========================
+   MANNEQUIN
+========================= */
+
+function renderMannequin(){
+
+  const top =
+    data.Haut.find(
+      x => x.id === state.Haut
+    );
+
+  const bot =
+    data.Bas.find(
+      x => x.id === state.Bas
+    );
+
+  const foot =
+    data.Pieds.find(
+      x => x.id === state.Pieds
+    );
+
+  const neck =
+    data.Cou.find(
+      x => x.id === state.Cou
+    );
+
+
+  const ts =
+    document.getElementById("topShape");
+
+  const td =
+    document.getElementById("topDetail");
+
+  const bs =
+    document.getElementById("bottomShape");
+
+
+  /* HAUT */
+
+  ts.setAttribute(
+    "fill",
+    top?.kind==="none"
+      ? "transparent"
+      : state.topColor
+  );
+
+
+  /* DETAILS DU HAUT */
+
+  if(top?.kind === "hoodie"){
+
+    td.setAttribute(
+      "d",
+      `
+      M111 70
+      Q125 90 139 70
+
+      M125 89
+      L125 123
+
+      M112 92
+      L105 112
+
+      M138 92
+      L145 112
+      `
+    );
+
+  }
+
+  else if(top?.kind === "polo"){
+
+    td.setAttribute(
+      "d",
+      `
+      M111 70
+      L125 86
+      L139 70
+
+      M125 86
+      L125 111
+      `
+    );
+
+  }
+
+  else{
+
+    td.setAttribute(
+      "d",
+      ""
+    );
+
+  }
+
+
+  /* BAS */
+
+  bs.setAttribute(
+    "fill",
+    bot?.kind==="none"
+      ? "transparent"
+      : bot?.color || "#304f88"
+  );
+
+
+  /* CHAUSSURES */
+
+  document.getElementById("shoes").innerHTML =
+
+    foot?.kind === "blackshoe"
+
+      ? shoe("#171717")
+
+      : foot?.kind === "redshoe"
+
+      ? shoe("#d93636")
+
+      : shoe("#fff");
+
+
+  /* ACCESSOIRES */
+
+  document.getElementById("neckItem").innerHTML =
+
+    neck?.kind === "cap"
+
+      ? `
+
+        <path
+          d="
+          M99 35
+          Q125 10 151 35
+          L154 47
+          Q125 35 96 47Z"
+          fill="#204bd9"
+          stroke="#26365f"
+          stroke-width="2"/>
+
+      `
+
+      : neck?.kind === "chain"
+
+      ? `
+
+        <circle
+          cx="125"
+          cy="92"
+          r="25"
+          fill="none"
+          stroke="#d9a82b"
+          stroke-width="4"/>
+
+        <circle
+          cx="125"
+          cy="116"
+          r="5"
+          fill="#d9a82b"/>
+
+      `
+
+      : "";
+
+}
+
+
+/* =========================
+   CHAUSSURES
+========================= */
+
+function shoe(c){
+
+  return `
+
+    <path
+      d="
+      M88 302
+      L120 302
+      L118 325
+      Q104 332 79 324
+      L82 307Z"
+      fill="${c}"
+      stroke="#52668e"
+      stroke-width="2"/>
+
+    <path
+      d="
+      M130 302
+      L162 302
+      L168 324
+      Q144 332 129 325
+      L132 307Z"
+      fill="${c}"
+      stroke="#52668e"
+      stroke-width="2"/>
+
+  `;
+
+}
+
+
+/* =========================
+   DESCRIPTION LOOK
+========================= */
+
+function updateCaption(){
+
+  let a =
+    data.Haut.find(
+      x => x.id===state.Haut
+    )?.name || "Aucun";
+
+
+  let b =
+    data.Bas.find(
+      x => x.id===state.Bas
+    )?.name || "Aucun";
+
+
+  let c =
+    data.Pieds.find(
+      x => x.id===state.Pieds
+    )?.name || "Aucun";
+
+
+  document.getElementById("caption").textContent =
+    `${a} · ${b} · ${c}`;
+
+}
+
+
+/* =========================
+   COULEURS
+========================= */
+
+function renderSwatches(){
+
+  const colors = [
+
+    "#2450df",
+
+    "#111a34",
+
+    "#d93636",
+
+    "#f4f4f4",
+
+    "#718064",
+
+    "#8b55d9"
+
+  ];
+
+
+  document.getElementById("swatches").innerHTML =
+
+    colors.map(c => `
+
+      <button
+        class="swatch ${state.topColor===c ? "active" : ""}"
+        style="background:${c}"
+        onclick="
+          state.topColor='${c}';
+          renderSwatches();
+          renderMannequin();
+        ">
+
+      </button>
+
+    `)
+    .join("");
+
+}
+
+
+/* =========================
+   LOOK ALÉATOIRE
+========================= */
+
+function randomLook(){
+
+  state.Haut =
+    data.Haut[
+      1 + Math.floor(
+        Math.random()*4
+      )
+    ].id;
+
+
+  state.Bas =
+    data.Bas[
+      Math.floor(
+        Math.random()*4
+      )
+    ].id;
+
+
+  state.Pieds =
+    data.Pieds[
+      Math.floor(
+        Math.random()*3
+      )
+    ].id;
+
+
+  renderItems();
+
+  renderMannequin();
+
+  updateCaption();
+
+  toast("Nouveau look généré ✨");
+
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetLook(){
+
+  state = {
+
+    Haut:"hoodie",
+
+    Bas:"jean",
+
+    Pieds:"white",
+
+    Cou:"noneNeck",
+
+    topColor:"#2450df"
+
+  };
+
+
+  renderTabs();
+
+  renderItems();
+
+  renderSwatches();
+
+  renderMannequin();
+
+  updateCaption();
+
+  toast("Look réinitialisé");
+
+}
+
+
+/* =========================
+   SAUVEGARDE
+========================= */
+
+function currentName(){
+
+  return `
+
+    ${data.Haut.find(
+      x => x.id===state.Haut
+    )?.name || "Aucun"}
+
+    ·
+
+    ${data.Bas.find(
+      x => x.id===state.Bas
+    )?.name || "Aucun"}
+
+  `;
+
+}
+
+
+function saveLook(){
+
+  let looks =
+    JSON.parse(
+      localStorage.getItem("shopyLooks") || "[]"
+    );
+
+
+  looks.unshift({
+
+    name:currentName(),
+
+    date:new Date()
+      .toLocaleDateString("fr-FR"),
+
+    state:state
+
+  });
+
+
+  localStorage.setItem(
+    "shopyLooks",
+    JSON.stringify(
+      looks.slice(0,12)
+    )
+  );
+
+
+  toast("Look enregistré ★");
+
+}
+
+
+/* =========================
+   MES LOOKS
+========================= */
+
+function showLooks(){
+
+  let looks =
+    JSON.parse(
+      localStorage.getItem("shopyLooks") || "[]"
+    );
+
+
+  document.getElementById("looks").innerHTML =
+
+    looks.length
+
+      ? looks.map(
+          (l,i) => `
+
+            <div class="look">
+
+              <div>
+
+                <b>
+                  ${l.name}
+                </b>
+
+                <br>
+
+                <small>
+                  ${l.date}
+                </small>
+
+              </div>
+
+
+              <button
+                class="tab"
+                onclick="loadLook(${i})">
+
+                Charger
+
+              </button>
+
+            </div>
+
+          `
+        ).join("")
+
+      :
+
+        `
+        <div class="empty">
+
+          Aucun look enregistré
+          pour le moment.
+
+        </div>
+        `;
+
+
+  document
+    .getElementById("sheet")
+    .classList.add("open");
+
+}
+
+
+function closeSheet(){
+
+  document
+    .getElementById("sheet")
+    .classList.remove("open");
+
+}
+
+
+function loadLook(i){
+
+  let looks =
+    JSON.parse(
+      localStorage.getItem("shopyLooks") || "[]"
+    );
+
+
+  let l = looks[i];
+
+
+  if(l){
+
+    state = l.state;
+
+    renderTabs();
+
+    renderItems();
+
+    renderSwatches();
+
+    renderMannequin();
+
+    updateCaption();
+
+    closeSheet();
+
+    toast("Look chargé");
+
+  }
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function shareWhatsApp(){
+
+  let text =
+    encodeURIComponent(
+      "Mon look Shopy Trend : "
+      + currentName()
+    );
+
+
+  window.open(
+    "https://wa.me/?text="+text,
+    "_blank"
+  );
+
+}
+
+
+/* =========================
+   EXPORT
+========================= */
+
+function exportLook(){
+
+  const svg =
+    document.querySelector(".mannequin");
+
+
+  const clone =
+    svg.cloneNode(true);
+
+
+  clone.setAttribute(
+    "xmlns",
+    "http://www.w3.org/2000/svg"
+  );
+
+
+  const xml =
+    new XMLSerializer()
+      .serializeToString(clone);
+
+
+  const blob =
+    new Blob(
+      [xml],
+      {
+        type:"image/svg+xml"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(blob);
+
+
+  const a =
+    document.createElement("a");
+
+
+  a.href = url;
+
+  a.download =
+    "shopy-look.svg";
+
+
+  a.click();
+
+
+  URL.revokeObjectURL(url);
+
+
+  toast("Image du look préparée");
+
+}
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+function toast(t){
+
+  const el =
+    document.getElementById("toast");
+
+
+  el.textContent = t;
+
+  el.classList.add("show");
+
+
+  setTimeout(
+    () =>
+      el.classList.remove("show"),
+    1800
+  );
+
+}
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+renderTabs();
+
+renderItems();
+
+renderSwatches();
+
+renderMannequin();
+
+updateCaption();
+
+</script>
+
+</body>
+</html>
